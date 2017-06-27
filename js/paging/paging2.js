@@ -290,4 +290,25 @@
 		"JZCB":"晋商银行",
 		"BOLG":"龙江银行",
 		"TAB":"泰安银行"};
+var rowAttrAccount={
+            showNum:false,
+            url:function(){
+                    return "/worksheet/doQueryMerchantAccount.do?merchantNo=" + ${quotaEntity.merchantNo};
+                },
+            rowList:[
+                {field:'accountCode',title:'账户号',width:'10%',align:'center'},
+                {field:'productName',title:'支付产品',width:'20%',align:'center'},  
+                {field:'status',title:'合同状态',width:'20%'},
+                {field:'industry3',title:'行业（二级）',width:'20%'},
+                {field:'webSite1',title:'APP',width:'10%'},
+                {field:'webSite',title:'网站',width:'10%'},
+                {field:'publicWeChatNum',title:'微信公众号',width:'10%'},
+                {field:'null',title:'操作',width:'10%',align:'center',formatter: function (value, row, index){
+	        		return '<a href="javascript:void(0);" onclick="showAccountDetail(' + row.id + ',' + row.accountNo + ')">查看</a>';
+					}
+				}
+            ],  
+             pageSize:2
+        };
+		initPaiging("pageAccount","tableAccount",rowAttrAccount);
 	
